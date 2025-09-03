@@ -19,6 +19,7 @@ import com.owo233.tcqt.hooks.base.moduleClassLoader
 import com.owo233.tcqt.hooks.base.moduleLoadInit
 import com.owo233.tcqt.hooks.base.modulePath
 import com.owo233.tcqt.hooks.base.moduleRes
+import com.owo233.tcqt.utils.DexKitUtils
 import com.owo233.tcqt.utils.PlatformTools
 import com.owo233.tcqt.utils.injectRes
 import com.owo233.tcqt.utils.logI
@@ -88,6 +89,8 @@ class MainEntry: IXposedHookLoadPackage, IXposedHookZygoteInit {
                 System.setProperty("TCQT_flag", "114514")
             } else return
 
+            DexKitUtils.initDexkitBridge() // 初始化 dexkit
+
             secStaticStageInited = true
 
             if (ProcUtil.isMain) {
@@ -110,9 +113,11 @@ class MainEntry: IXposedHookLoadPackage, IXposedHookZygoteInit {
                 ProcUtil.isTool -> ActionProcess.TOOL
                 ProcUtil.isOpenSdk -> ActionProcess.OPENSDK
                 else -> ActionProcess.OTHER
-            })
+            }) // hook 全部注册完成
 
             moduleLoadInit = true
+
+            DexKitUtils.release() // 释放 dexkit
         }
     }
 

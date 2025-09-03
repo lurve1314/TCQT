@@ -13,6 +13,10 @@ const val PACKAGE_NAME_SELF = "com.owo233.tcqt"
 
 lateinit var hostInfo: HostInfoImpl
 
+fun isInitHostInfo(): Boolean {
+    return ::hostInfo.isInitialized
+}
+
 fun initHostInfo(appCtx: Application) {
     if (::hostInfo.isInitialized)  return
 

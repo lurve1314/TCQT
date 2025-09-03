@@ -22,6 +22,7 @@ ksp = "2.2.10-2.0.2"
 nanohttpd = "2.3.1"
 
 # Xposed
+dexkit = "2.0.6"
 xposed = "82"
 
 [libraries]
@@ -43,6 +44,7 @@ protobuf-java = { group = "com.google.protobuf", name = "protobuf-java", version
 nanohttpd = { group = "org.nanohttpd", name = "nanohttpd", version.ref = "nanohttpd" }
 
 # Xposed
+dexkit = { group = "org.luckypray", name = "dexkit", version.ref = "dexkit" }
 xposed-api = { group = "de.robv.android.xposed", name = "api", version.ref = "xposed" }
 
 [plugins]

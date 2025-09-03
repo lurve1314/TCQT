@@ -54,6 +54,10 @@ android {
         versionName = "3.2"
         buildConfigField("String", "APP_NAME", "\"TCQT\"")
         buildConfigField("Long", "BUILD_TIMESTAMP", "${System.currentTimeMillis()}L")
+        ndk {
+            //noinspection ChromeOsAbiSupport
+            abiFilters += arrayOf("arm64-v8a")
+        }
     }
 
     buildFeatures {
@@ -184,6 +188,7 @@ dependencies {
     implementation(project(":annotations"))
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.dexkit)
     implementation(libs.kotlinx.io.jvm)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
